@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CMS\DashboardController;
+use App\Http\Controllers\CMS\JenisController;
+use App\Http\Controllers\CMS\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/jenis', [JenisController::class, 'index']);
+Route::get('/profile', [ProfilController::class, 'index']);

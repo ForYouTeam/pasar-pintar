@@ -15,11 +15,11 @@ class ProfilController extends Controller
 		$this->jenisRepo = $jenisRepo;
 	}
 
-	// public function getView()
-	// {
-	// 	$data = $this->jenisRepo->getAllPayload();
-	// 	return view('pages.Jabatan')->with('data', $data['data']);
-	// }
+	public function index()
+	{
+		$data = $this->jenisRepo->getAllPayload();
+		return view('Pages.Profile')->with('data', $data['data']);
+	}
 
 	public function getPayloadData()
 	{

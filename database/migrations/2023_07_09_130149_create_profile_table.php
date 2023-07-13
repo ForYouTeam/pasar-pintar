@@ -16,9 +16,9 @@ class CreateProfileTable extends Migration
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->string('nama_pemilik');
-            $table->integer('nama_usaha');
-            $table->integer('alamat');
-            $table->integer('telepon');
+            $table->string('nama_usaha');
+            $table->string('alamat');
+            $table->string('telepon');
             $table->timestamps();
         });
     }
