@@ -81,7 +81,10 @@
             $('#alertdeskripsi' ).html ('')
             $('#alamat'         ).val  ('')
             $('#telepon'        ).val  ('')
+        }
 
+        function closeModal() {
+          $('#data-modal').modal('hide')
         }
 
         $('#createData').click(function () {

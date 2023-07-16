@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Interfaces\AkunInterface;
 use App\Interfaces\HewanInterface;
 use App\Interfaces\JenisInterface;
 use App\Interfaces\ProfileInterface;
 use App\Interfaces\UpdateInterface;
+use App\Repositories\AkunRepository;
 use App\Repositories\HewanRepository;
 use App\Repositories\JenisRepository;
 use App\Repositories\ProfileRepository;
@@ -25,6 +27,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProfileInterface::class, ProfileRepository::class);
         $this->app->bind(UpdateInterface::class, UpdateHargaRepository::class);
         $this->app->bind(HewanInterface::class, HewanRepository::class);
+        $this->app->bind(AkunInterface::class, AkunRepository::class);
     }
 
     /**
