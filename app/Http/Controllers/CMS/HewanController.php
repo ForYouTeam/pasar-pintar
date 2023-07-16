@@ -3,23 +3,38 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HewanRequest;
 use App\Interfaces\HewanInterface;
+use App\Interfaces\JenisInterface;
+use App\Interfaces\UpdateInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class HewanController extends Controller
 {
 	private HewanInterface $hewanRepo;
+	private JenisInterface $jenisRepo;
+	private UpdateInterface $updateRepo;
 
-	public function __construct(HewanInterface $hewanRepo)
+	public function __construct(HewanInterface $hewanRepo, JenisInterface $jenisRepo, UpdateInterface $updateRepo)
 	{
 		$this->hewanRepo = $hewanRepo;
+		$this->jenisRepo = $jenisRepo;
+		$this->updateRepo = $updateRepo;
 	}
 
-	// public function getView()
-	// {
-	// 	$data = $this->hewanRepo->getAllPayload();
-	// 	return view('pages.Jabatan')->with('data', $data['data']);
-	// }
+	public function index()
+	{
+		$update = $this->updateRepo->getAllPayload([]);
+		$jenis  = $this->jenisRepo->getAllPayload([]);
+		$data   = $this->hewanRepo->getAllPayload([]);
+		return view('Pages.Hewan')->with([
+			'data' => $data['data'],
+			'jenis' => $jenis['data'],
+			'update' => $update['data']
+		]);
+	}
 
 	public function getPayloadData()
 	{
@@ -34,10 +49,23 @@ class HewanController extends Controller
 		return response()->json($payload, $payload['code']);
 	}
 
-	public function upsertPayloadData(Request $request)
+	public function upsertPayloadData(HewanRequest $request)
 	{
+		$date = Carbon::now();
+		$fileUpload = $request->file('path');
+		$nameFile = 'photo' . '_' . $date . '.' . $fileUpload->getClientOriginalExtension();
+
+		$data = $request->except('_token');
+		$data['path'] = $nameFile;
+
 		$id = $request->id | null;
-		$payload = $this->hewanRepo->upsertPayload($id, $request->except('_token'));
+		$payload = $this->hewanRepo->upsertPayload($id, $data);
+
+		if ($payload) {
+
+			$filePath = public_path('storage/gambar/');
+			$fileUpload->move($filePath, $nameFile);
+		}
 
 		return response()->json($payload, $payload['code']);
 	}
@@ -45,7 +73,11 @@ class HewanController extends Controller
 
 	public function deletePayloadData($id)
 	{
+		$data = $this->hewanRepo->getPayloadById($id);
 		$payload = $this->hewanRepo->deletePayload($id);
+		$foto = $data['data']['path'];
+
+		File::delete(public_path('storage/gambar/' . $foto));
 
 		return response()->json($payload, $payload['code']);
 	}

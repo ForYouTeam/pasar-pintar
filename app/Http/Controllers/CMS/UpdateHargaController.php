@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HargaRequest;
 use App\Interfaces\UpdateInterface;
 use Illuminate\Http\Request;
 
@@ -15,11 +16,11 @@ class UpdateHargaController extends Controller
 		$this->jenisRepo = $jenisRepo;
 	}
 
-	// public function getView()
-	// {
-	// 	$data = $this->jenisRepo->getAllPayload();
-	// 	return view('pages.Jabatan')->with('data', $data['data']);
-	// }
+	public function index()
+	{
+		$data = $this->jenisRepo->getAllPayload();
+		return view('Pages.UpdateHarga')->with('data', $data['data']);
+	}
 
 	public function getPayloadData()
 	{
@@ -34,7 +35,7 @@ class UpdateHargaController extends Controller
 		return response()->json($payload, $payload['code']);
 	}
 
-	public function upsertPayloadData(Request $request)
+	public function upsertPayloadData(HargaRequest $request)
 	{
 		$id = $request->id | null;
 		$payload = $this->jenisRepo->upsertPayload($id, $request->except('_token'));

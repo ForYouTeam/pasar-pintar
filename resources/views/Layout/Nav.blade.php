@@ -8,7 +8,7 @@
       </div>
       <div>
         <a class="navbar-brand brand-logo" href="index.html">
-          <img src="{{asset('assets/images/logo.svg')}}" alt="logo" />
+          <img src="{{asset('template/assets/images/cow2.png')}}" style="transform: scale(1.7); margin-left: 1.5rem" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="index.html">
           <img src="images/logo-mini.svg" alt="logo" />
@@ -18,7 +18,7 @@
     <div class="navbar-menu-wrapper d-flex align-items-top"> 
       <ul class="navbar-nav">
         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-          <h1 class="welcome-text">Selamat datang, <span class="text-black fw-bold">John Doe</span></h1>
+          <h1 class="welcome-text">Selamat datang, <span class="text-black fw-bold">{{Auth::user()->nama}}</span></h1>
           <h3 class="welcome-sub-text">Your performance summary this week </h3>
         </li>
       </ul>
@@ -66,7 +66,7 @@
             <img class="img-xs rounded-circle" src="{{asset('assets/images/faces/face8.jpg')}}" alt="Profile image"> 
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+            <a class="dropdown-item" href="{{route('logout')}}"><i class="dropdown-item-icon mdi mdi-power text-danger me-2"></i>Sign Out</a>
           </div>
         </li>
       </ul>

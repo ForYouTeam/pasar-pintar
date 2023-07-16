@@ -5,7 +5,7 @@
     <div class="card">
       <div class="card-header">
         <h4 class="mt-1" style="float: left"><b>Data Jenis Hewan</b></h4>
-        <button class="btn btn-primary btn-rounded" style="float: right" id="createData">Tambah Data</button>
+        <button onclick="clearInput()" class="btn btn-primary btn-rounded" style="float: right" id="createData">Tambah Data</button>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -38,7 +38,7 @@
         <div class="modal-body">
             <input type="hidden" id="id" name="id">
             <div class="form-group row">
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Email</label>
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Jenis Hewan</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="nama_jenis" name="nama_jenis" placeholder="Input disini">
                 <span class="text-danger text-small" id="alert-jenis"></span>
@@ -69,6 +69,10 @@
         
         function closeModal() {
           $('#data-modal').modal('hide')
+        }
+
+        function clearInput(){
+          $('#nama_jenis').val('')
         }
 
         $('#createData').click(function () {

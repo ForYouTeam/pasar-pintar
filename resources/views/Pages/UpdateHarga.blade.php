@@ -13,10 +13,8 @@
             <thead>
               <tr>
                 <th>No</th>
-                <th>Nama Pemilik.</th>
-                <th>Nama Usaha</th>
-                <th>Alamat</th>
-                <th>Telepon</th>
+                <th>Code</th>
+                <th>Harga</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -41,13 +39,13 @@
             <div class="form-group row">
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Code harga</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control mb-3" id="code" name="code" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <input type="number" class="form-control" id="code" name="code" placeholder="Input disini">
+                <span class="text-danger text-small" id="alert-code"></span>
               </div>
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Harga</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control mb-3" id="nama_usaha" name="nama_usaha" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <input type="number" class="form-control mt-3" id="harga" name="harga" placeholder="Input disini">
+                <span class="text-danger text-small" id="alert-harga"></span>
               </div>
             </div>
         </div>
@@ -64,14 +62,14 @@
         const baseUrl = `{{ config('app.url') }}`
 
         function clearInput() {
-            $('#id'             ).val  ('')
-            $('#nama_pemilik'   ).val  ('')
-            $('#alert_jabatan'  ).html ('')
-            $('#nama_usaha'     ).val  ('')
-            $('#alertdeskripsi' ).html ('')
-            $('#alamat'         ).val  ('')
-            $('#telepon'        ).val  ('')
+          $('#code' ).val('')
+          $('#harga').val('')
+          $('#alert-code').html('')
+          $('#alert-harga').html('')
+        }
 
+        function closeModal() {
+          $('#data-modal').modal('hide')
         }
 
         $('#createData').click(function () {
@@ -103,7 +101,7 @@
                         }
                     })
                     $.ajax({
-                        url: `${baseUrl}/api/v1/profile/${dataId}`,
+                        url: `${baseUrl}/api/v1/update_harga/${dataId}`,
                         type: 'delete',
                         success: function(result) {
                             let data = result.data;
@@ -136,7 +134,7 @@
         $(document).on('click', '#btn-edit', function() {
             clearInput()
             let dataId = $(this).data('id')
-            $.get(`${baseUrl}/api/v1/profile/${dataId}`, (res) => {
+            $.get(`${baseUrl}/api/v1/update_harga/${dataId}`, (res) => {
                 let data = res.data
                 $.each(data, (i,d) => {
                     if (i != "created_at" && i != "updated_at") {
@@ -155,15 +153,13 @@
 
         function postData() {
             const data = {
-                id           : $('#id'           ).val(),
-                nama_pemilik : $('#nama_pemilik' ).val(),
-                nama_usaha   : $('#nama_usaha'   ).val(),
-                alamat       : $('#alamat'       ).val(),
-                telepon      : $('#telepon'      ).val()
+                id    : $('#id'    ).val(),
+                code  : $('#code'  ).val(),
+                harga : $('#harga' ).val(),
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v1/profile/`,
+                url        : `${baseUrl}/api/v1/update_harga/`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {
@@ -183,7 +179,7 @@
                         let errorRes = data.errors;
                         if (errorRes.length >= 1) {
                             $.each(errorRes.data, (i, d) => {
-                                $(`#alert${i}`).html(d)
+                                $(`#alert-${i}`).html(d)
                             })
                         }
                     } else {
@@ -200,7 +196,7 @@
 
         function getAllData() {
             $('#tabledata').DataTable().destroy()
-            $.get(`${baseUrl}/api/v1/profile`, (res) => {
+            $.get(`${baseUrl}/api/v1/update_harga`, (res) => {
                 let data = res.data
 
                 $('#tbody').html('')
@@ -208,10 +204,8 @@
                     $('#tbody').append(`
                         <tr>
                             <td>${i + 1}</td>
-                            <td class="text-capitalize">${d.nama_pemilik}</td>
-                            <td class="text-capitalize">${d.nama_usaha}</td>
-                            <td class="text-capitalize">${d.alamat}</td>
-                            <td class="text-capitalize">${d.telepon}</td>
+                            <td class="text-capitalize">${d.code}</td>
+                            <td class="text-capitalize">${d.harga}</td>
                             <td>
                             <button id="btn-edit" data-id="${d.id}" class="btn rounded btn-sm btn-outline-primary mr-1">Edit</button>
                             <button id="btn-hapus" data-id="${d.id}" class="btn rounded btn-sm btn-outline-danger">Hapus</button>

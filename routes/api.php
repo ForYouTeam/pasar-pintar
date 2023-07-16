@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CMS\AkunController;
 use App\Http\Controllers\CMS\HewanController;
 use App\Http\Controllers\CMS\JenisController;
 use App\Http\Controllers\CMS\ProfilController;
@@ -48,4 +49,12 @@ Route::prefix('v1/hewan')->controller(HewanController::class)->group(function()
     Route::post  ('/'    , 'upsertPayloadData' );
     Route::get   ('/{id}', 'getPayloadDataId');
     Route::delete('/{id}', 'deletePayloadData' );
+});
+
+Route::prefix('v1/akun')->controller(AkunController::class)->group(function()
+{
+    Route::get   ('/'    , 'getAllData' );
+    Route::post  ('/'    , 'upsertData' );
+    Route::get   ('/{id}', 'getDataById');
+    Route::delete('/{id}', 'deleteData' );
 });
