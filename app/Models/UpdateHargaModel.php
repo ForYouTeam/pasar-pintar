@@ -12,5 +12,8 @@ class UpdateHargaModel extends Model
     protected $fillable = [
         'code',
         'harga',
+        'profile_id',
+        'created_at',
+        'updated_at'
     ];
 }

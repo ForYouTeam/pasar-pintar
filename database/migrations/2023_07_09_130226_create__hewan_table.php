@@ -23,6 +23,7 @@ class CreateHewanTable extends Migration
             $table->string('status');
             $table->integer('harga');
             $table->foreignId('harga_id')->constrained('update_harga');
+            $table->foreignId('profile_id')->constrained('profile');
             $table->timestamps();
         });
     }

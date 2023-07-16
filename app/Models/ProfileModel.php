@@ -13,6 +13,8 @@ class ProfileModel extends Model
         'nama_pemilik',
         'nama_usaha',
         'alamat',
-        'telepon'
+        'telepon',
+        'created_at',
+        'updated_at'
     ];
 }

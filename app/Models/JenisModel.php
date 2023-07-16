@@ -11,5 +11,7 @@ class JenisModel extends Model
     protected $table = 'jenis';
     protected $fillable = [
         'nama_jenis',
+        'created_at',
+        'updated_at'
     ];
 }

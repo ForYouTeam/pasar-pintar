@@ -19,26 +19,34 @@ class HewanModel extends Model
         'status',
         'harga',
         'harga_id',
+        'profile_id',
         'quantity',
         'path',
+        'created_at',
+        'updated_at'
     ];
 
     public function scopejoinList($query)
     {
         return $query
-            ->leftJoin('jenis as jenis_hewan', 'hewan.jenis_id', 'jenis_hewan.id')
-            ->leftJoin('update_harga as perubahan', 'hewan.harga_id', 'perubahan.id')
+            ->leftJoin('jenis as a'       , 'hewan.jenis_id'  , 'a.id')
+            ->leftJoin('update_harga as b', 'hewan.harga_id'  , 'b.id')
+            ->leftJoin('profile as c'     , 'hewan.profile_id', 'c.id')
             ->select(
                 'hewan.id',
                 'hewan.nama_usaha',
-                'jenis_hewan.nama_jenis as nama_jenis',
+                'a.nama_jenis as nama_jenis',
                 'hewan.berat',
                 'hewan.jk',
                 'hewan.usia',
                 'hewan.status',
                 'hewan.harga',
-                'perubahan.code as code_hewan',
-                'perubahan.harga as perubahan_harga',
+                'b.code as code_hewan',
+                'b.harga as perubahan_harga',
+                'c.nama_pemilik as pemilik',
+                'c.nama_usaha as peternakan',
+                'c.telepon as telepon',
+                'c.alamat as alamat',
                 'hewan.quantity',
                 'hewan.path',
                 'hewan.created_at',
