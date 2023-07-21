@@ -60,6 +60,7 @@
     @include('web.skelton.Footer')
 
     @include('web.skelton.Bottom')
+    @yield('script')
 </body>
 
 </html>

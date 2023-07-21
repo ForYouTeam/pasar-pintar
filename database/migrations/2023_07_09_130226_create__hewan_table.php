@@ -15,14 +15,14 @@ class CreateHewanTable extends Migration
     {
         Schema::create('hewan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_usaha');
+            $table->string('nama');
             $table->foreignId('jenis_id')->constrained('jenis');
             $table->integer('berat');
             $table->string('jk');
             $table->integer('usia');
             $table->string('status');
             $table->integer('harga');
-            $table->foreignId('harga_id')->constrained('update_harga');
+            $table->foreignId('harga_id')->nullable()->constrained('update_harga');
             $table->foreignId('profile_id')->constrained('profile');
             $table->timestamps();
         });

@@ -26,9 +26,10 @@ class AkunRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required',
-            'username' => 'required',
-            'password' => 'required',
+            'nama'       => 'required',
+            'username'   => 'required',
+            'password'   => 'required',
+            'profile_id' => 'required',
         ];
     }
 

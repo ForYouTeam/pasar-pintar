@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="single-form form-group">
-                                <label for="" class="label-group">Nama :</label>
+                                <label for="" class="label-group">Nama:</label>
                                 <input type="text" name="nama" placeholder="Masukan Nama"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="single-form form-group">
-                                <label for="" class="label-group">Jenis Pesanan :</label>
+                                <label for="" class="label-group">Alamat :</label>
                                 <input type="text" name="jenis_pesanan" placeholder="Masukan Pesanan"
                                     data-error="Valid email is required." required="required">
                                 <div class="help-block with-errors"></div>
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="single-form form-group">
-                                <label for="" class="label-group">Jumlah :</label>
+                                <label for="" class="label-group">Jenis :</label>
                                 <input type="text" name="jumlah" placeholder="Masukan Jumlah"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-lg-12">
                             <div class="single-form form-group">
-                                <label for="" class="label-group">Alamat :</label>
+                                <label for="" class="label-group">Keterangan :</label>
                                 <textarea name="alamat" cols="30" rows="10"></textarea>
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->

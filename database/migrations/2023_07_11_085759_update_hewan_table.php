@@ -14,8 +14,9 @@ class UpdateHewanTable extends Migration
     public function up()
     {
         Schema::table('hewan', function (Blueprint $table) {
-            $table->string('quantity' )->after('harga_id');
-            $table->string('path' )->after('quantity');
+            $table->string('quantity'   )->after('harga_id');
+            $table->string('path'       )->after('quantity');
+            $table->string('keterangan' )->after('path'    );
         });
     }
 

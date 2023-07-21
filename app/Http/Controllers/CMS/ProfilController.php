@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileRequest;
 use App\Interfaces\ProfileInterface;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class ProfilController extends Controller
 		return response()->json($payload, $payload['code']);
 	}
 
-	public function upsertPayloadData(Request $request)
+	public function upsertPayloadData(ProfileRequest $request)
 	{
 		$id = $request->id | null;
 		$payload = $this->jenisRepo->upsertPayload($id, $request->except('_token'));

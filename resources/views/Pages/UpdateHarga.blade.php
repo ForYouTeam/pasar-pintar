@@ -14,7 +14,7 @@
               <tr>
                 <th>No</th>
                 <th>Code</th>
-                <th>Harga</th>
+                <th>Diskon</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -42,10 +42,20 @@
                 <input type="number" class="form-control" id="code" name="code" placeholder="Input disini">
                 <span class="text-danger text-small" id="alert-code"></span>
               </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Harga</label>
+              <label for="exampleInputUsername2" class="col-sm-3 mt-3 col-form-label">Diskon</label>
               <div class="col-sm-9">
                 <input type="number" class="form-control mt-3" id="harga" name="harga" placeholder="Input disini">
                 <span class="text-danger text-small" id="alert-harga"></span>
+              </div>
+              <label for="exampleInputUsername2" class="col-sm-3 mt-3 col-form-label">Profile</label>
+              <div class="col-sm-9">
+                <select name="profile_id" id="profile_id" class="form-control mt-3">
+                  <option value="" selected disabled>-- Pilih --</option>
+                  @foreach ($profil as $d)
+                      <option value="{{$d->id}}">{{$d->nama_pemilik}}</option>
+                  @endforeach
+                </select>
+                <span class="text-danger text-small" id="alert-profile_id"></span>
               </div>
             </div>
         </div>
@@ -64,6 +74,7 @@
         function clearInput() {
           $('#code' ).val('')
           $('#harga').val('')
+          $('#profile_id').val('')
           $('#alert-code').html('')
           $('#alert-harga').html('')
         }
@@ -156,6 +167,7 @@
                 id    : $('#id'    ).val(),
                 code  : $('#code'  ).val(),
                 harga : $('#harga' ).val(),
+                profile_id : $('#profile_id' ).val(),
             }
 
             $.ajax({
@@ -205,7 +217,7 @@
                         <tr>
                             <td>${i + 1}</td>
                             <td class="text-capitalize">${d.code}</td>
-                            <td class="text-capitalize">${d.harga}</td>
+                            <td class="text-capitalize">${d.harga}%</td>
                             <td>
                             <button id="btn-edit" data-id="${d.id}" class="btn rounded btn-sm btn-outline-primary mr-1">Edit</button>
                             <button id="btn-hapus" data-id="${d.id}" class="btn rounded btn-sm btn-outline-danger">Hapus</button>

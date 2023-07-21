@@ -19,6 +19,15 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 text-center">
               <h4 class="text-center mb-2">Selamat Datang di Aplikasi <br> <i><b>SIPERBAN</b></i></h4>
               <span class="text-primary">Sistem Informasi Penjualan Hewan Kurban</span>
+              @if (session('success'))
+                <div class="alert alert-success">
+                  <b>{{ session('success') }}</b>
+                </div>
+              @elseif(session('error'))
+                <div class="alert alert-danger">
+                  <b>{{ session('error') }}</b>
+                </div>
+              @endif
               <form class="pt-3" action="{{route('process')}}">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Username" name="username">

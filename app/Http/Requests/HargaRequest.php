@@ -26,8 +26,9 @@ class HargaRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => 'required | numeric',
-            'harga' => 'required | numeric',
+            'code'       => 'required | numeric',
+            'harga'      => 'required | numeric',
+            'profile_id' => 'required'          ,
         ];
     }
 

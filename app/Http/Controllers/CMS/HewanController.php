@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HewanRequest;
 use App\Interfaces\HewanInterface;
 use App\Interfaces\JenisInterface;
+use App\Interfaces\ProfileInterface;
 use App\Interfaces\UpdateInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,12 +17,14 @@ class HewanController extends Controller
 	private HewanInterface $hewanRepo;
 	private JenisInterface $jenisRepo;
 	private UpdateInterface $updateRepo;
+	private ProfileInterface $profileRepo;
 
-	public function __construct(HewanInterface $hewanRepo, JenisInterface $jenisRepo, UpdateInterface $updateRepo)
+	public function __construct(HewanInterface $hewanRepo, JenisInterface $jenisRepo, UpdateInterface $updateRepo, ProfileInterface $profileRepo)
 	{
 		$this->hewanRepo = $hewanRepo;
 		$this->jenisRepo = $jenisRepo;
 		$this->updateRepo = $updateRepo;
+		$this->profileRepo = $profileRepo;
 	}
 
 	public function index()
@@ -29,10 +32,12 @@ class HewanController extends Controller
 		$update = $this->updateRepo->getAllPayload([]);
 		$jenis  = $this->jenisRepo->getAllPayload([]);
 		$data   = $this->hewanRepo->getAllPayload([]);
+		$profil = $this->profileRepo->getAllPayload([]);
 		return view('Pages.Hewan')->with([
-			'data' => $data['data'],
-			'jenis' => $jenis['data'],
-			'update' => $update['data']
+			'data'   => $data  ['data'],
+			'jenis'  => $jenis ['data'],
+			'update' => $update['data'],
+			'profil' => $profil['data']
 		]);
 	}
 
