@@ -44,14 +44,24 @@
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Input disini">
                 <span class="text-danger text-small" id="alert-jenis"></span>
               </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Username</label>
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label mt-3">Username</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Input disini">
+                <input type="text" class="form-control mt-3" id="username" name="username" placeholder="Input disini">
                 <span class="text-danger text-small" id="alert-jenis"></span>
               </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Password</label>
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label mt-3">Password</label>
               <div class="col-sm-9">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Input disini">
+                <input type="password" class="form-control mt-3" id="password" name="password" placeholder="Input disini">
+                <span class="text-danger text-small" id="alert-jenis"></span>
+              </div>
+              <label for="exampleInputUsername2" class="col-sm-3 col-form-label mt-3">Profile</label>
+              <div class="col-sm-9">
+                <select name="profile_id" id="profile_id" class="form-control mt-3">
+                  <option value="" selected disabled>-- Pilih --</option>
+                  @foreach ($profil as $d)
+                      <option value="{{$d->id}}">{{$d->nama_pemilik}}</option>
+                  @endforeach
+                </select>
                 <span class="text-danger text-small" id="alert-jenis"></span>
               </div>
             </div>
@@ -85,6 +95,7 @@
         function clearInput(){
           $('#nama').val('')
           $('#username').val('')
+          $('#profile_id').val('')
         }
 
         $('#createData').click(function () {
@@ -98,23 +109,25 @@
         $('body').on('click', '#btn-edit', function () {
             var _id = $(this).data('id');
             $.get(`${baseUrl}/api/v1/akun/` + _id, function (res) {
-                $('.modal-title' ).html  ("Formulir Edit Data" );
-                $('#btn-simpan'  ).val   ("edit-user"          );
-                $('#data-modal'  ).modal ('show'               );
-                $('#nama'     ).val  (res.data.nama                                   );
-                $('#username' ).val  (res.data.username                               );
-                $('#password' ).val  (res.data.password                               );
-                $('#password' ).attr ('placeholder', 'Silahkan masukan password baru' );
-                $('#id'       ).val  (res.data.id                                     );
+                $('.modal-title' ).html  ("Formulir Edit Data"                            );
+                $('#btn-simpan'  ).val   ("edit-user"                                     );
+                $('#data-modal'  ).modal ('show'                                          );
+                $('#nama'        ).val   (res.data.nama                                   );
+                $('#username'    ).val   (res.data.username                               );
+                $('#password'    ).val   (res.data.password                               );
+                $('#profile_id'  ).val   (res.data.profile_id                             );
+                $('#password'    ).attr  ('placeholder', 'Silahkan masukan password baru' );
+                $('#id'          ).val   (res.data.id                                     );
             })
         });
 
         function postData() {
             const data = {
-                id       : $('#id'       ).val(),
-                nama     : $('#nama'     ).val(),
-                username : $('#username' ).val(),
-                password : $('#password' ).val(),
+                id         : $('#id'         ).val(),
+                nama       : $('#nama'       ).val(),
+                username   : $('#username'   ).val(),
+                password   : $('#password'   ).val(),
+                profile_id : $('#profile_id' ).val(),
             }
 
             $.ajax({

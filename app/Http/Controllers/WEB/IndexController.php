@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function indexView() {
-        $data = HewanModel::all();
+    public function indexView()
+    {
+        $data = HewanModel::joinList()->get();
         return view('web.index')->with('data', $data);
     }
-    public function pesanan() {
+    public function pesanan()
+    {
         return view('web.pesanan');
     }
 }

@@ -42,22 +42,22 @@
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama pemilik</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control mb-3" id="nama_pemilik" name="nama_pemilik" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <span class="text-danger text-small" id="alert-nama_pemilik"></span>
               </div>
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Usaha</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control mb-3" id="nama_usaha" name="nama_usaha" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <span class="text-danger text-small" id="alert-nama_usaha"></span>
               </div>
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control mb-3" id="alamat" name="alamat" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <span class="text-danger text-small" id="alert-alamat"></span>
               </div>
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Telepon</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <span class="text-danger text-small" id="alert-telepon"></span>
               </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
                         let errorRes = data.errors;
                         if (errorRes.length >= 1) {
                             $.each(errorRes.data, (i, d) => {
-                                $(`#alert${i}`).html(d)
+                                $(`#alert-${i}`).html(d)
                             })
                         }
                     } else {

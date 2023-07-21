@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             return redirect(route('dashboard'));
         }
-        return back()->with('statusErr', 'Username atau password salah');
+        return back()->with('error', 'Username atau password salah');
     }
 
     public function logout(Request $request)
@@ -38,6 +38,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect(route('login'))->with('status', 'Berhasil Logout');
+        return redirect(route('login'))->with('success', 'Berhasil Logout');
     }
 }

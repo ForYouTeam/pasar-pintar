@@ -11,7 +11,7 @@ class HewanModel extends Model
     use HasFactory;
     protected $table = 'hewan';
     protected $fillable = [
-        'nama_usaha',
+        'nama',
         'jenis_id',
         'berat',
         'jk',
@@ -22,6 +22,7 @@ class HewanModel extends Model
         'profile_id',
         'quantity',
         'path',
+        'keterangan',
         'created_at',
         'updated_at'
     ];
@@ -34,7 +35,7 @@ class HewanModel extends Model
             ->leftJoin('profile as c'     , 'hewan.profile_id', 'c.id')
             ->select(
                 'hewan.id',
-                'hewan.nama_usaha',
+                'hewan.nama',
                 'a.nama_jenis as nama_jenis',
                 'hewan.berat',
                 'hewan.jk',
@@ -49,6 +50,7 @@ class HewanModel extends Model
                 'c.alamat as alamat',
                 'hewan.quantity',
                 'hewan.path',
+                'hewan.keterangan',
                 'hewan.created_at',
                 'hewan.updated_at',
             );

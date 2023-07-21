@@ -18,8 +18,8 @@
                         </div>
                         <div class="col-lg-8 col-md-7">
                             <div class="slider-product-content">
-                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->joinJenis->nama_jenis}}</h1>
-                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a small line of blind text by the name of Lorem Ipsum <br> decided to leave for the far World of Grammar.</p>
+                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->nama_jenis}}</h1>
+                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
                                 <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                             </div> <!-- slider product content -->
                         </div>
@@ -81,14 +81,22 @@
                                     <div class="single-product-items">
                                         <div class="product-item-image">
                                             <a href="#"><img src="{{asset('storage/gambar/'.$d['path'])}}" alt="Product" style="width: 100%; height: 280px;"></a>
-                                            <div class="product-discount-tag">
-                                                <p>-10%</p>
-                                            </div>
+                                            @if ($d->perubahan_harga == null)
+                                                
+                                            @else
+                                                <div class="product-discount-tag">
+                                                    <p>-{{$d->perubahan_harga}}%</p>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="product-item-content text-center mt-15">
-                                            <h5 class="product-title"><a href="#">{{$d->joinJenis->nama_jenis}}</a></h5>
-                                            <span class="regular-price mt-1 mb-1">Rp.{{$d['harga']}}</span><br>
-                                            <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                                            <h5 class="product-title"><a href="#" >{{$d->nama_jenis}}</a></h5>
+                                            <span class="regular-price mt-1 mb-1" style="">Rp.
+                                                {{
+                                                    $d->harga - ($d->harga * ($d->perubahan_harga/100))
+                                                }}
+                                            </span><br>
+                                            <a class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                                         </div>
                                     </div> <!-- single product items -->
                                 </div>
@@ -248,4 +256,29 @@
     </div> <!-- container -->
 </section>
 
+@endsection
+@section('script')
+    <script>
+        // const baseUrl = `{{ config('app.url') }}`
+
+        // function calculate() {
+        //     $.get(`${baseUrl}/api/v1/hewan`, function(res) {
+        //         let data = res.data;
+        //         $('#diskon').html('');
+        //         $.each(data, (i, d) => {
+        //             let harga = d.harga
+        //             let diskon = d.perubahan_harga
+        //             let hasil = d.harga - (d.harga * (d.perubahan_harga/100))
+        //             console.log(hasil);
+        //             $('#diskon').html(`<span class="regular-price mt-1 mb-1" style="">Rp.${hasil}</span><br>`);
+        //         });
+        //     });
+        // }
+                
+
+        // $(document).ready(function() 
+        // {
+        //     calculate()
+        // });
+    </script>
 @endsection

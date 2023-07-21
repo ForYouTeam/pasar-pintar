@@ -4,22 +4,29 @@ namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HargaRequest;
+use App\Interfaces\ProfileInterface;
 use App\Interfaces\UpdateInterface;
 use Illuminate\Http\Request;
 
 class UpdateHargaController extends Controller
 {
 	private UpdateInterface $jenisRepo;
+	private ProfileInterface $profilRepo;
 
-	public function __construct(UpdateInterface $jenisRepo)
+	public function __construct(UpdateInterface $jenisRepo, ProfileInterface $profilRepo)
 	{
 		$this->jenisRepo = $jenisRepo;
+		$this->profilRepo = $profilRepo;
 	}
 
 	public function index()
 	{
-		$data = $this->jenisRepo->getAllPayload();
-		return view('Pages.UpdateHarga')->with('data', $data['data']);
+		$profil = $this->profilRepo->getAllPayload([]);
+		$data = $this->jenisRepo->getAllPayload([]);
+		return view('Pages.UpdateHarga')->with([
+			'data' => $data['data'],
+			'profil' => $profil['data']
+		]);
 	}
 
 	public function getPayloadData()

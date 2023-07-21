@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\CMS;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\HewanModel;
+use App\Models\JenisModel;
+use App\Models\ProfileModel;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('Layout.Base');
+        $data = [
+            'profil' => ProfileModel::count(),
+            'user' => User::count(),
+            'jenis' => JenisModel::count(),
+            'hewan' => HewanModel::count(),
+        ]; 
+        
+        return view('Pages.Dashboard')->with('data', $data);
     }
 }

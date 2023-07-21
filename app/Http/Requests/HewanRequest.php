@@ -26,16 +26,17 @@ class HewanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_usaha' => 'required',
+            'nama'       => 'required',
+            'profile_id' => 'required',
             'jenis_id'   => 'required',
             'berat'      => 'required',
             'jk'         => 'required',
             'usia'       => 'required',
             'status'     => 'required',
             'harga'      => 'required',
-            'harga_id'   => 'required',
             'quantity'   => 'required',
             'path'       => 'required',
+            'keterangan' => 'required',
         ];
     }
 

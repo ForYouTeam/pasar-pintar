@@ -41,7 +41,7 @@
               <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Jenis Hewan</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="nama_jenis" name="nama_jenis" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-jenis"></span>
+                <span class="text-danger text-small" id="alert-nama_jenis"></span>
               </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
                         let errorRes = data.errors;
                         if (errorRes.length >= 1) {
                             $.each(errorRes.data, (i, d) => {
-                                $(`#alert${i}`).html(d)
+                                $(`#alert-${i}`).html(d)
                             })
                         }
                     } else {

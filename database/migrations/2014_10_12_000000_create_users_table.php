@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('level');
+            $table->foreignId('profile_id')->nullable()->constrained('profile');
             $table->timestamps();
         });
     }

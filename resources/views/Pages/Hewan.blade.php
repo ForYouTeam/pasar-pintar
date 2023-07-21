@@ -41,12 +41,27 @@
         </div>
         <div class="modal-body">
           <form id="formData" enctype="multipart/form-data">
-              <input type="hidden" id="id" name="id">
-              <div class="form-group row">
+            <div class="form-group row">
+                <input type="hidden" id="id" name="id">
+                @hasrole('super-admin')
+                <div class="col-sm-12">
+                  <label for="exampleInputUsername2" class="col-form-label">Profile</label>
+                    <select name="profile_id" id="profile_id" class="form-control val">
+                      <option value="" disabled selected>-- Pilih --</option>
+                      @foreach ($profil as $j)
+                          <option value="{{$j->id}}">{{$j->nama_pemilik}}</option>
+                      @endforeach
+                    </select>
+                    <span class="text-danger text-small alert" id="alert-profile_id"></span>
+                </div>
+                @endhasrole
+                @hasrole('admin')
+                  <input type="hidden" class="form-control" id="profile_id" name="profile_id" value="{{Auth::user()->profile_id}}">
+                @endhasrole
                 <div class="col-sm-6">
-                <label for="exampleInputUsername2" class="col-form-label">Nama usaha</label>
-                  <input type="text" class="form-control val" id="nama_usaha" name="nama_usaha" placeholder="Input disini">
-                  <span class="text-danger text-small alert" id="alert-nama_usaha"></span>
+                <label for="exampleInputUsername2" class="col-form-label">Nama</label>
+                  <input type="text" class="form-control val" id="nama" name="nama" placeholder="Input disini">
+                  <span class="text-danger text-small alert" id="alert-nama"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Jenis</label>
@@ -56,25 +71,26 @@
                           <option value="{{$j->id}}">{{$j->nama_jenis}}</option>
                       @endforeach
                     </select>
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-jenis"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Berat</label>
                     <input type="number" class="form-control val" id="berat" name="berat" placeholder="Input disini">
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-berat"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Jenis Kelamin</label>
                   <select name="jk" id="jk" class="form-control val">
-                    <option value="betina">Betina</option>
+                    <option value="" selected disabled>-- Pilih --</option>
                     <option value="jantan">Jantan</option>
+                    <option value="betina">Betina</option>
                   </select>
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-jk"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Usia</label>
                     <input type="number" class="form-control val" id="usia" name="usia" placeholder="Input disini">
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-usia"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Status</label>
@@ -82,12 +98,12 @@
                       <option value="lengkap">Lengkap</option>
                       <option value="tidak lengkap">Tidak Lengkap</option>
                     </select>
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-status"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Harga</label>
                     <input type="number" class="form-control val" id="harga" name="harga" placeholder="Input disini">
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-harga"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Perubahan</label>
@@ -97,17 +113,20 @@
                           <option value="{{$j->id}}">{{$j->code}}</option>
                       @endforeach
                     </select>
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Quantity</label>
                     <input type="number" class="form-control val" id="quantity" name="quantity" placeholder="Input disini">
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                    <span class="text-danger text-small alert" id="alert-quantity"></span>
                 </div>
                 <div class="col-sm-6">
                   <label for="exampleInputUsername2" class="col-form-label">Path</label>
                     <input type="file" class="form-control val" id="path" name="path" placeholder="Input disini">
-                    <span class="text-danger text-small alert" id="alert-nama_pemilik"></span>
+                </div>
+                <div class="col-sm-12">
+                  <label for="exampleInputUsername2" class="col-form-label">Keterangan</label>
+                    <textarea name="keterangan" id="keterangan" class="form-control val" rows="8"></textarea>
+                    <span class="text-danger text-small alert" id="alert-keterangan"></span>
                 </div>
               </div>
             </div>
@@ -145,13 +164,13 @@
         $(document).on('click', '#btn-hapus', function() {
             let dataId = $(this).data('id')
             Swal.fire({
-                title: 'Apakah anda yakin?',
-                text: "Data tidak dapat dipulihkan!",
-                icon: 'warning',
-                showCancelButton: true,
+                title             : 'Apakah anda yakin?',
+                text              : "Data tidak dapat dipulihkan!",
+                icon              : 'warning',
+                showCancelButton  : true,
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, hapus!'
+                cancelButtonColor : '#d33',
+                confirmButtonText : 'Yes, hapus!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     Swal.fire({
@@ -199,17 +218,19 @@
                 $('#btn-simpan').val("edit-user");
                 clearInput()
                 $('#data-modal').modal('show');
-                $('#id'        ).val(res.data.id        );
-                $('#nama_usaha').val(res.data.nama_usaha);
-                $('#jenis_id'  ).val(res.data.jenis_id  );
-                $('#berat'     ).val(res.data.berat     );
-                $('#jk'        ).val(res.data.jk        );
-                $('#usia'      ).val(res.data.usia      );
-                $('#status'    ).val(res.data.status    );
-                $('#harga'     ).val(res.data.harga     );
-                $('#harga_id'  ).val(res.data.harga_id  );
-                $('#quantity'  ).val(res.data.quantity  );
-                $('#path'      ).val(res.data.path      );
+                $('#id'         ).val(res.data.id         );
+                $('#profile_id' ).val(res.data.profile_id );
+                $('#nama'       ).val(res.data.nama       );
+                $('#jenis_id'   ).val(res.data.jenis_id   );
+                $('#berat'      ).val(res.data.berat      );
+                $('#jk'         ).val(res.data.jk         );
+                $('#usia'       ).val(res.data.usia       );
+                $('#status'     ).val(res.data.status     );
+                $('#harga'      ).val(res.data.harga      );
+                $('#harga_id'   ).val(res.data.harga_id   );
+                $('#quantity'   ).val(res.data.quantity   );
+                $('#keterangan' ).val(res.data.keterangan );
+                $('#path'       ).val(res.data.path       );
             });
         });
 
@@ -240,10 +261,12 @@
                 },
                 error: function(err) {
                     if (err.status === 422) {
-                        let data = err.responseJSON;
+                        let data = err.responseJSON
                         let errorRes = data.errors;
                         if (errorRes.length >= 1) {
-                            $('#alert-gambar').html(errorRes.data.nisn);
+                            $.each(errorRes.data, (i, d) => {
+                                $(`#alert-${i}`).html(d)
+                            })
                         }
                     } else {
                         let msg = 'Sedang pemeliharaan server';
@@ -267,7 +290,7 @@
                     $('#tbody').append(`
                         <tr>
                             <td>${i + 1}</td>
-                            <td class="text-capitalize">${d.nama_usaha}</td>
+                            <td class="text-capitalize">${d.nama}</td>
                             <td class="text-capitalize">${d.nama_jenis}</td>
                             <td class="text-capitalize">${d.berat}</td>
                             <td class="text-capitalize">${d.status}</td>
