@@ -30,10 +30,11 @@ class ProfileRequest extends FormRequest
             'nama_usaha'   => 'required | min:2 | max:150',
             'alamat'       => 'required | min:2 | max:150',
             'telepon'      => 'required | min:2 | max:150',
+            'foto'         => 'required',
         ];
     }
 
-       protected function failedValidation(Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
             'response' => array(
