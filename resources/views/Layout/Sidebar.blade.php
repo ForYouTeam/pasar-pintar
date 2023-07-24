@@ -13,12 +13,14 @@
           <span class="menu-title">Hewan</span>
         </a>
       </li>
+      @hasrole('super-admin')
       <li class="nav-item">
         <a class="nav-link" href="{{route('profile')}}">
           <i class="menu-icon mdi mdi-account-edit"></i>
           <span class="menu-title">Profile</span>
         </a>
       </li>
+      @endhasrole
       <li class="nav-item">
         <a class="nav-link" href="{{route('jenis')}}">
           <i class="menu-icon mdi mdi-book"></i>
@@ -28,7 +30,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('update')}}">
           <i class="menu-icon mdi mdi-cash"></i>
-          <span class="menu-title">Perubahan Harga</span>
+          <span class="menu-title">Discon</span>
         </a>
       </li>
       @hasrole('super-admin')
