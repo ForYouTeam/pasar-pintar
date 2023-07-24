@@ -59,7 +59,7 @@
                   <input type="hidden" class="form-control" id="profile_id" name="profile_id" value="{{Auth::user()->profile_id}}">
                 @endhasrole
                 <div class="col-sm-6">
-                <label for="exampleInputUsername2" class="col-form-label">Nama</label>
+                <label for="exampleInputUsername2" class="col-form-label">Jenis Hewan</label>
                   <input type="text" class="form-control val" id="nama" name="nama" placeholder="Input disini">
                   <span class="text-danger text-small alert" id="alert-nama"></span>
                 </div>
@@ -106,11 +106,11 @@
                     <span class="text-danger text-small alert" id="alert-harga"></span>
                 </div>
                 <div class="col-sm-6">
-                  <label for="exampleInputUsername2" class="col-form-label">Perubahan</label>
+                  <label for="exampleInputUsername2" class="col-form-label">Discon</label>
                     <select name="harga_id" id="harga_id" class="form-control val">
                       <option value="" disabled selected>-- Pilih --</option>
                       @foreach ($update as $j)
-                          <option value="{{$j->id}}">{{$j->code}}</option>
+                          <option value="{{$j->id}}">{{$j->harga}}%</option>
                       @endforeach
                     </select>
                 </div>

@@ -3,30 +3,50 @@
 <section id="home" class="slider-area pt-100">
     <div class="container-fluid position-relative">
         <div class="slider-active">
-            @foreach ($data as $d)
-                
-            <div class="single-slider">
+           @if (count($data) <= 0)
+           <div class="single-slider">
                 <div class="slider-bg">
                     <div class="row no-gutters align-items-center ">
                         <div class="col-lg-4 col-md-5">
                             <div class="slider-product-image d-none d-md-block">
-                                <img src="{{asset('storage/gambar/'.$d['path'])}}" alt="Slider">
-                                <div class="slider-discount-tag">
-                                    <p>Harga <br> Spesial</p>
-                                </div>
+                                <img src="{{asset('storage/gambar/')}}" alt="Belum ada postingan">
                             </div> <!-- slider product image -->
                         </div>
                         <div class="col-lg-8 col-md-7">
                             <div class="slider-product-content">
-                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->nama_jenis}}</h1>
-                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> </h1>
+                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
                                 <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                             </div> <!-- slider product content -->
                         </div>
                     </div> <!-- row -->
                 </div> <!-- container -->
-            </div>
-            @endforeach
+            </div> 
+           @else
+           @foreach ($data as $d)   
+           <div class="single-slider">
+               <div class="slider-bg">
+                   <div class="row no-gutters align-items-center ">
+                       <div class="col-lg-4 col-md-5">
+                           <div class="slider-product-image d-none d-md-block">
+                               <img src="{{asset('storage/gambar/'.$d['path'])}}" alt="Slider">
+                               <div class="slider-discount-tag">
+                                   <p>Harga <br> Spesial</p>
+                               </div>
+                           </div> <!-- slider product image -->
+                       </div>
+                       <div class="col-lg-8 col-md-7">
+                           <div class="slider-product-content">
+                               <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->nama_jenis}}</h1>
+                               <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                               <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                           </div> <!-- slider product content -->
+                       </div>
+                   </div> <!-- row -->
+               </div> <!-- container -->
+           </div>
+           @endforeach 
+           @endif
             
         </div> <!-- slider active -->
         <div class="slider-social">
@@ -171,114 +191,7 @@
         </div> 
     </div> 
 </section>
-<section id="contact" class="contact-area pt-115">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="contact-title text-center">
-                    <h2 class="title">Hubungi Kami</h2>
-                </div> 
-            </div>
-        </div> 
-        <div class="contact-box mt-70">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="contact-info pt-25">
-                        <h4 class="info-title">Contact Info</h4>
-                        <ul>
-                            <li>
-                                <div class="single-info mt-30">
-                                    <div class="info-icon">
-                                        <i class="lni-phone-handset"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <p>+88 1234 56789</p>
-                                    </div>
-                                </div> 
-                            </li>
-                            <li>
-                                <div class="single-info mt-30">
-                                    <div class="info-icon">
-                                        <i class="lni-envelope"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <p>contact@yourmail.com</p>
-                                    </div>
-                                </div> 
-                            </li>
-                            <li>
-                                <div class="single-info mt-30">
-                                    <div class="info-icon">
-                                        <i class="lni-home"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <p>203, Envato Labs, Behind Alis Steet,Australia</p>
-                                    </div>
-                                </div> 
-                            </li>
-                        </ul>
-                    </div> 
-                </div> 
-                <div class="col-lg-8">
-                    <div class="contact-form">
-                        <form id="contact-form" action="template/assets/contact.php" method="post" data-toggle="validator">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="single-form form-group">
-                                        <input type="text" name="name" placeholder="Enter Your Name" data-error="Name is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="single-form form-group">
-                                        <input type="email" name="email" placeholder="Enter Your Email"  data-error="Valid email is required." required="required">
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="single-form form-group">
-                                        <textarea name="message" placeholder="Enter Your Message" data-error="Please,leave us a message." required="required"></textarea>
-                                        <div class="help-block with-errors"></div>
-                                    </div> <!-- single form -->
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-lg-12">
-                                    <div class="single-form form-group">
-                                        <button class="main-btn" type="submit">CONTACT NOW</button>
-                                    </div> <!-- single form -->
-                                </div>
-                            </div> <!-- row -->
-                        </form>
-                    </div> <!-- row -->
-                </div> 
-            </div> <!-- row -->
-        </div> <!-- contact box -->
-    </div> <!-- container -->
-</section>
 
 @endsection
 @section('script')
-    <script>
-        // const baseUrl = `{{ config('app.url') }}`
-
-        // function calculate() {
-        //     $.get(`${baseUrl}/api/v1/hewan`, function(res) {
-        //         let data = res.data;
-        //         $('#diskon').html('');
-        //         $.each(data, (i, d) => {
-        //             let harga = d.harga
-        //             let diskon = d.perubahan_harga
-        //             let hasil = d.harga - (d.harga * (d.perubahan_harga/100))
-        //             console.log(hasil);
-        //             $('#diskon').html(`<span class="regular-price mt-1 mb-1" style="">Rp.${hasil}</span><br>`);
-        //         });
-        //     });
-        // }
-                
-
-        // $(document).ready(function() 
-        // {
-        //     calculate()
-        // });
-    </script>
 @endsection
