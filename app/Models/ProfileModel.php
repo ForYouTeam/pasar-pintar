@@ -14,6 +14,7 @@ class ProfileModel extends Model
         'nama_usaha',
         'alamat',
         'telepon',
+        'foto',
         'created_at',
         'updated_at'
     ];

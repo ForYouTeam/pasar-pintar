@@ -17,6 +17,7 @@
                 <th>Nama Usaha</th>
                 <th>Alamat</th>
                 <th>Telepon</th>
+                <th>Foto</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -37,33 +38,40 @@
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         </div>
         <div class="modal-body">
-            <input type="hidden" id="id" name="id">
-            <div class="form-group row">
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama pemilik</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control mb-3" id="nama_pemilik" name="nama_pemilik" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-nama_pemilik"></span>
+            <form action="" id="formData">
+              <input type="hidden" id="id" name="id">
+              <div class="form-group row">
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama pemilik</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control mb-3" id="nama_pemilik" name="nama_pemilik" placeholder="Input disini">
+                  <span class="text-danger text-small" id="alert-nama_pemilik"></span>
+                </div>
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Usaha</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control mb-3" id="nama_usaha" name="nama_usaha" placeholder="Input disini">
+                  <span class="text-danger text-small" id="alert-nama_usaha"></span>
+                </div>
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control mb-3" id="alamat" name="alamat" placeholder="Input disini">
+                  <span class="text-danger text-small" id="alert-alamat"></span>
+                </div>
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Telepon</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control mb-3" id="telepon" name="telepon" placeholder="Input disini">
+                  <span class="text-danger text-small" id="alert-telepon"></span>
+                </div>
+                <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Foto</label>
+                <div class="col-sm-9">
+                  <input type="file" class="form-control" id="foto" name="foto" placeholder="Input disini">
+                  <span class="text-danger text-small" id="alert-alamat"></span>
+                </div>
               </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Nama Usaha</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control mb-3" id="nama_usaha" name="nama_usaha" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-nama_usaha"></span>
-              </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Alamat</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control mb-3" id="alamat" name="alamat" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-alamat"></span>
-              </div>
-              <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Telepon</label>
-              <div class="col-sm-9">
-                <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Input disini">
-                <span class="text-danger text-small" id="alert-telepon"></span>
-              </div>
-            </div>
+            </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary text-light" onclick="closeModal()">Close</button>
-          <button id="btn-simpan" onclick="postData()" class="btn btn-primary">Save changes</button>
+          <button id="btn-simpan" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -147,51 +155,47 @@
         })
 
         $(document).on('click', '#btn-edit', function() {
-            clearInput()
-            let dataId = $(this).data('id')
-            $.get(`${baseUrl}/api/v1/profile/${dataId}`, (res) => {
-                let data = res.data
-                $.each(data, (i,d) => {
-                    if (i != "created_at" && i != "updated_at") {
-                        $(`#${i}`).val(d)
-                    }
-                })
-                $('#data-modal').modal('show')
-            }).fail((err) => {
-                iziToast.error({
-                    title   : 'Error'                    ,
-                    message : 'Server sedang maintenance',
-                    position: 'topRight'
-                });
-            })
-        })
+            let dataId = $(this).data('id');
+            $.get(`${baseUrl}/api/v1/profile/` + dataId, function(res) {
+                $('#btn-simpan').val("edit-user");
+                clearInput()
+                $('#data-modal').modal('show');
+                $('#id'           ).val(res.data.id           );
+                $('#nama_pemilik' ).val(res.data.nama_pemilik );
+                $('#nama_usaha'   ).val(res.data.nama_usaha   );
+                $('#alamat'       ).val(res.data.alamat       );
+                $('#telepon'      ).val(res.data.telepon      );
+                $('#foto'         ).val(res.data.foto         );
+            });
+        });
 
-        function postData() {
-            const data = {
-                id           : $('#id'           ).val(),
-                nama_pemilik : $('#nama_pemilik' ).val(),
-                nama_usaha   : $('#nama_usaha'   ).val(),
-                alamat       : $('#alamat'       ).val(),
-                telepon      : $('#telepon'      ).val()
-            }
+        $('#btn-simpan').click(function (e) {
+            e.preventDefault();
+            $(this).html('Menyimpan...');
+            $(this).prop('disabled', true);
+
+            let foto = $('#foto').prop('files')[0];
+            let data = new FormData($('#formData')[0]);
 
             $.ajax({
-                url        : `${baseUrl}/api/v1/profile/`,
-                method     : "POST"                   ,
-                data       : data                     ,
+                url: `${baseUrl}/api/v1/profile`,
+                method: "POST",
+                data: data,
+                processData: false,
+                contentType: false,
                 success: function(res) {
-                    $('#data-modal').modal('hide')
-                    Swal.fire({
-                      title            : 'Success'               ,
-                      text             : 'Data berhasil ditambahkan',
-                      icon             : 'success'               ,
-                      cancelButtonColor: '#d33'                  ,
-                      confirmButtonText: 'Oke'
-                    })
+                  Swal.fire({
+                    title            : 'Success'               ,
+                    text             : 'Data berhasil dihapus',
+                    icon             : 'success'               ,
+                    cancelButtonColor: '#d33'                  ,
+                    confirmButtonText: 'Oke'
+                  })
+                  $('#data-modal').modal('hide');
                     getAllData()
                 },
                 error: function(err) {
-                    if (err.status = 422) {
+                    if (err.status === 422) {
                         let data = err.responseJSON
                         let errorRes = data.errors;
                         if (errorRes.length >= 1) {
@@ -199,17 +203,18 @@
                                 $(`#alert-${i}`).html(d)
                             })
                         }
+                        getAllData()
                     } else {
-                        iziToast.error({
-                            title   : 'Error'                    ,
-                            message : 'Server sedang maintenance',
-                            position: 'topRight'
-                        });
+                        let msg = 'Sedang pemeliharaan server';
+                        iziToast.error(msg);
                     }
                 },
-                dataType   : "json"
+                complete: function() {
+                    $('#btn-simpan').html('Simpan');
+                    $('#btn-simpan').prop('disabled', false);
+                }
             });
-        }
+        });
 
         function getAllData() {
             $('#tabledata').DataTable().destroy()
@@ -225,6 +230,7 @@
                             <td class="text-capitalize">${d.nama_usaha}</td>
                             <td class="text-capitalize">${d.alamat}</td>
                             <td class="text-capitalize">${d.telepon}</td>
+                            <td class="text-capitalize"><img src="storage/gambar/${d.foto}" alt="Gambar"></td>
                             <td>
                             <button id="btn-edit" data-id="${d.id}" class="btn rounded btn-sm btn-outline-primary mr-1">Edit</button>
                             <button id="btn-hapus" data-id="${d.id}" class="btn rounded btn-sm btn-outline-danger">Hapus</button>

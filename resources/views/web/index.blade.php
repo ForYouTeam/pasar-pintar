@@ -14,9 +14,7 @@
                         </div>
                         <div class="col-lg-8 col-md-7">
                             <div class="slider-product-content">
-                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> </h1>
-                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s">Belum ada postingan </h1>
                             </div> <!-- slider product content -->
                         </div>
                     </div> <!-- row -->
@@ -96,31 +94,35 @@
                     <div class="tab-pane fade show active" id="v-pills-furniture" role="tabpanel" aria-labelledby="v-pills-furniture-tab">
                         <div class="product-items mt-30">
                             <div class="row product-items-active">
+                                @if (count($data) <= 0)
+                                    <p class="text-center" style="font-size: 20pt">Belum ada penjualan</p>
+                                @else
                                 @foreach ($data as $d)
-                                <div class="col-md-4">
-                                    <div class="single-product-items">
-                                        <div class="product-item-image">
-                                            <a href="#"><img src="{{asset('storage/gambar/'.$d['path'])}}" alt="Product" style="width: 100%; height: 280px;"></a>
-                                            @if ($d->perubahan_harga == null)
-                                                
-                                            @else
-                                                <div class="product-discount-tag">
-                                                    <p>-{{$d->perubahan_harga}}%</p>
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="product-item-content text-center mt-15">
-                                            <h5 class="product-title"><a href="#" >{{$d->nama_jenis}}</a></h5>
-                                            <span class="regular-price mt-1 mb-1" style="">Rp.
-                                                {{
-                                                    $d->harga - ($d->harga * ($d->perubahan_harga/100))
-                                                }}
-                                            </span><br>
-                                            <a class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
-                                        </div>
-                                    </div> <!-- single product items -->
-                                </div>
+                                    <div class="col-md-4">
+                                        <div class="single-product-items">
+                                            <div class="product-item-image">
+                                                <a href="#"><img src="{{asset('storage/gambar/'.$d['path'])}}" alt="Product" style="width: 100%; height: 280px;"></a>
+                                                @if ($d->perubahan_harga == null)
+                                                    
+                                                @else
+                                                    <div class="product-discount-tag">
+                                                        <p>-{{$d->perubahan_harga}}%</p>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="product-item-content text-center mt-15">
+                                                <h5 class="product-title"><a href="#" >{{$d->nama_jenis}}</a></h5>
+                                                <span class="regular-price mt-1 mb-1" style="">Rp.
+                                                    {{
+                                                        $d->harga - ($d->harga * ($d->perubahan_harga/100))
+                                                    }}
+                                                </span><br>
+                                                <a class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                                            </div>
+                                        </div> <!-- single product items -->
+                                    </div>
                                 @endforeach
+                                @endif
                             </div> 
                         </div> 
                     </div> 
@@ -130,66 +132,38 @@
     </div> 
 </section>
 <section id="testimoni" class="team-area pt-125 pb-130">
+    @if (count($profil) <= 0)
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-title text-center pb-25">
-                    <h3 class="title mb-15">TESTIMONI</h3>
+                    <h3 class="title mb-15">PROFILE</h3>
                     <p></p>
                 </div> 
             </div>
         </div> 
+    <p class="text-center" style="font-size: 20pt">Belum ada profile</p>
+    @else
+        @foreach ($profil as $d)
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6 col-sm-8">
                 <div class="single-temp text-center mt-30">
                     <div class="team-image">
-                        <img src="{{asset('template/assets/images/testimoni/admin.jpg')}}"
-                         alt="Team">
+                        <img src="{{asset('storage/gambar/'. $d['foto'])}}" alt="Team" style="transform: scale(0.7)">
                     </div>
                     <div class="team-content mt-30">
                         <h4 class="title mb-10"><a href="#">Celina Gomez</a></h4>
-                        <p>Saya sangat suka belanja di naskun narasa, karena nasi kuning tersebut sangat enak ya guys yaa</p>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-8">
-                <div class="single-temp text-center mt-30">
-                    <div class="team-image">
-                        <img src="{{asset('template/assets/images/testimoni/admin.jpg')}}"
-                         alt="Team">
-                    </div>
-                    <div class="team-content mt-30">
-                        <h4 class="title mb-10"><a href="#">Patric Green</a></h4>
-                        <p>Saya sangat suka belanja di naskun narasa, karena nasi kuning tersebut sangat enak ya guys yaa</p>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-8">
-                <div class="single-temp text-center mt-30">
-                    <div class="team-image">
-                        <img src="{{asset('template/assets/images/testimoni/admin.jpg')}}"
-                         alt="Team">
-                    </div>
-                    <div class="team-content mt-30">
-                        <h4 class="title mb-10"><a href="#">Mark Parker</a></h4>
-                        <p>Saya sangat suka belanja di naskun narasa, karena nasi kuning tersebut sangat enak ya guys yaa</p>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-8">
-                <div class="single-temp text-center mt-30">
-                    <div class="team-image">
-                        <img src="{{asset('template/assets/images/testimoni/admin.jpg')}}"
-                         alt="Team">
-                    </div>
-                    <div class="team-content mt-30">
-                        <h4 class="title mb-10"><a href="#">Daryl Dixon</a></h4>
-                        <p>Saya sangat suka belanja di naskun narasa, karena nasi kuning tersebut sangat enak ya guys yaa</p>
+                        <p>Nama : Nazar</p>
+                        <p>Nama : Nazar</p>
+                        <p>Nama : Nazar</p>
+                        <p>Nama : Nazar</p>
                     </div>
                 </div> 
             </div>
         </div> 
     </div> 
+    @endforeach
+    @endif
 </section>
 
 @endsection
