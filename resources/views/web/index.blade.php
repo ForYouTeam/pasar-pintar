@@ -36,8 +36,8 @@
                        <div class="col-lg-8 col-md-7">
                            <div class="slider-product-content">
                                <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->nama_jenis}}</h1>
-                               <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                               <a class="main-btn" href="product.php" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                               <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> {{$d['keterangan']}} </p>
+                               <a class="main-btn" href="#menu" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                            </div> <!-- slider product content -->
                        </div>
                    </div> <!-- row -->
@@ -60,7 +60,7 @@
         </div>
     </div> <!-- container fluid -->
 </section>
-<section id="Profil" class="showcase-area pt-100 pb-130">
+<section id="about" class="showcase-area pt-100 pb-130">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -68,17 +68,17 @@
                         <h2 class="title">Tentang Kami</h2>
                     </div> <!-- showcase title -->
                 </div> 
-                <div class="col-lg-6">
-                    <div class="showcase-title pt-25">
-                        <p>Terinspirasi masakan khas dari berbagai daerah di Indonesia yang kaya akan rasa dan jenisnya,
-                            Naskun Narasa dengan bangga memperkenalkan berbagai produknya yaitu Nasi Kuning dengan sajian aneka
-                            Berbagai macam menu, Nasi Kuning dengan pilihan Ayam dan Daging, serta Aneka Nasi Kuning Ekonomis & Lauk Siap Saji dengan pilihan hidangan Indonesia yang lebih beraneka ragam dan lengkap.</p>
+                <div class="col-lg-8">
+                    <div class="showcase-title pt-25 text-justify">
+                        <p>Pemasaran hewan qurban bukan hanya tentang menjual dan mendistribusikan hewan, tetapi juga membawa manfaat sosial yang signifikan bagi masyarakat. 
+                        Melalui strategi pemasaran yang efektif, pelaksanaan hewan qurban dapat mencapai potensi maksimalnya dalam memberikan manfaat kepada penerima manfaat 
+                        yang membutuhkan. Dengan demikian, semakin banyak masyarakat yang merasakan manfaat dan keberkahan dari ibadah qurban, serta semakin erat persatuan dan solidaritas di antara umat Muslim.</p>
                     </div> <!-- showcase title -->
                 </div>
             </div>
         </div> <!-- container -->
 </section>
-<section id="product" class="product-area pt-50 pb-130">
+<section id="menu" class="product-area pt-50 pb-130">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -131,7 +131,7 @@
         </div> 
     </div> 
 </section>
-<section id="testimoni" class="team-area pt-125 pb-130">
+<section id="profile" class="team-area pt-125 pb-130">
     @if (count($profil) <= 0)
     <div class="container">
         <div class="row justify-content-center">
@@ -180,11 +180,7 @@
                                     <td class="text-left"> {{$i['telepon']}}</td>
                                 </tr>
                                 <tr>
-<<<<<<< HEAD
-                                    <td colspan="3"><a href="" class="main-btn mt-3">Chat sekarang</a></td>
-=======
                                     <td colspan="3"><button data-nomor="{{ $i['telepon'] }}" type="button" class="main-btn mt-3 btn-chat">Chat sekarang</button></td>
->>>>>>> e8c3cfe9e099a455c8afe0cd89daed7ba210953c
                                 </tr>
                             </table>
                         </p>

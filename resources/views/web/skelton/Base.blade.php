@@ -34,13 +34,13 @@
                                     <a data-scroll-nav="0" href="#home">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#Profil">About</a>
+                                    <a data-scroll-nav="0" href="#about">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#product">Menu</a>
+                                    <a data-scroll-nav="0" href="#menu">Menu</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#testimoni">Profile</a>
+                                    <a data-scroll-nav="0" href="#profile">Profile</a>
                                 </li>
                             </ul> <!-- navbar nav -->
                         </div>
