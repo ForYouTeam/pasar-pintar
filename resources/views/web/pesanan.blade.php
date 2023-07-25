@@ -12,7 +12,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Nama:</label>
-                                <input id="nama" type="text" placeholder="Masukan Nama"
+                                <input id="nama" type="text" placeholder="Input disini"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -20,7 +20,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Alamat :</label>
-                                <input id="alamat" type="text" placeholder="Masukan Pesanan"
+                                <input id="alamat" type="text" placeholder="Input disini"
                                     data-error="Valid email is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -28,7 +28,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Jenis :</label>
-                                <input id="jenis" type="text" placeholder="Masukan Jumlah"
+                                <input id="jenis" type="text" placeholder="Input disini"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -36,7 +36,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Harga :</label>
-                                <input id="harga" type="text" placeholder="Masukan Harga"
+                                <input id="harga" type="text" placeholder="Input disini"
                                     data-error="Valid email is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->

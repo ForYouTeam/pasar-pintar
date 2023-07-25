@@ -180,7 +180,11 @@
                                     <td class="text-left"> {{$i['telepon']}}</td>
                                 </tr>
                                 <tr>
+<<<<<<< HEAD
+                                    <td colspan="3"><a href="" class="main-btn mt-3">Chat sekarang</a></td>
+=======
                                     <td colspan="3"><button data-nomor="{{ $i['telepon'] }}" type="button" class="main-btn mt-3 btn-chat">Chat sekarang</button></td>
+>>>>>>> e8c3cfe9e099a455c8afe0cd89daed7ba210953c
                                 </tr>
                             </table>
                         </p>

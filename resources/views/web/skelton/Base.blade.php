@@ -34,19 +34,13 @@
                                     <a data-scroll-nav="0" href="#home">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#Profil">Profil</a>
+                                    <a data-scroll-nav="0" href="#Profil">About</a>
                                 </li>
                                 <li class="nav-item">
                                     <a data-scroll-nav="0" href="#product">Menu</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#testimoni">Testimoni</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#contact">Contact</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a data-scroll-nav="0" href="product.php"><i>BUY NOW</i></a>
+                                    <a data-scroll-nav="0" href="#testimoni">Profile</a>
                                 </li>
                             </ul> <!-- navbar nav -->
                         </div>
