@@ -12,7 +12,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Nama:</label>
-                                <input type="text" name="nama" placeholder="Masukan Nama"
+                                <input id="nama" type="text" placeholder="Masukan Nama"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -20,7 +20,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Alamat :</label>
-                                <input type="text" name="jenis_pesanan" placeholder="Masukan Pesanan"
+                                <input id="alamat" type="text" placeholder="Masukan Pesanan"
                                     data-error="Valid email is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -28,7 +28,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Jenis :</label>
-                                <input type="text" name="jumlah" placeholder="Masukan Jumlah"
+                                <input id="jenis" type="text" placeholder="Masukan Jumlah"
                                     data-error="Name is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -36,7 +36,7 @@
                         <div class="col-lg-6">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Harga :</label>
-                                <input type="text" name="harga" placeholder="Masukan Harga"
+                                <input id="harga" type="text" placeholder="Masukan Harga"
                                     data-error="Valid email is required." required="required">
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
@@ -44,13 +44,13 @@
                         <div class="col-lg-12">
                             <div class="single-form form-group">
                                 <label for="" class="label-group">Keterangan :</label>
-                                <textarea name="alamat" cols="30" rows="10"></textarea>
+                                <textarea id="keterangan" cols="30" rows="10"></textarea>
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
                         </div>
                         <div class="col-lg-12">
                             <div class="single-form form-group">
-                                <button class="main-btn" type="submit">PESAN SEKARANG</button>
+                                <button class="main-btn" type="button" id="btn-process">PESAN SEKARANG</button>
                             </div> <!-- single form -->
                         </div>
                     </div> <!-- row -->
@@ -59,4 +59,22 @@
         </div>
     </div> <!-- row -->
 </div> <!-- contact box -->
+@endsection
+@section('script')
+    <script>
+        $(document).on('click', '#btn-process', function() {
+            const nama       = $('#nama').val()
+            const alamat     = $('#alamat').val()
+            const jenis      = $('#jenis').val()
+            const harga      = $('#harga').val()
+            const keterangan = $('#keterangan').val()
+            const nomor      = '6282189037993'
+
+            const whatsappMessage = `nama: ${nama}\nalamat: ${alamat}\njenis%sapi: ${jenis}\nharga: ${harga}\nketerangan: ${keterangan}`;
+            const encodedMessage  = encodeURIComponent(whatsappMessage);
+            const whatsappLink    = `https://wa.me/${nomor}?text=${encodedMessage}`;
+            
+            window.location.href  = whatsappLink
+        })
+    </script>
 @endsection
