@@ -117,7 +117,7 @@
                                                         $d->harga - ($d->harga * ($d->perubahan_harga/100))
                                                     }}
                                                 </span><br>
-                                                <a href="{{route('pemesanan')}}" class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                                                <a href="{{ route('pemesanan', $d->telepon) }}" class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                                             </div>
                                         </div> <!-- single product items -->
                                     </div>
@@ -180,7 +180,11 @@
                                     <td class="text-left"> {{$i['telepon']}}</td>
                                 </tr>
                                 <tr>
+<<<<<<< HEAD
                                     <td colspan="3"><a href="" class="main-btn mt-3">Chat sekarang</a></td>
+=======
+                                    <td colspan="3"><button data-nomor="{{ $i['telepon'] }}" type="button" class="main-btn mt-3 btn-chat">Chat sekarang</button></td>
+>>>>>>> e8c3cfe9e099a455c8afe0cd89daed7ba210953c
                                 </tr>
                             </table>
                         </p>
@@ -195,4 +199,17 @@
 
 @endsection
 @section('script')
+<script>
+    $(document).ready(function() {
+        $('.btn-chat').click(function() {
+            let noTelepon = $(this).data('nomor')
+
+            const whatsappMessage = `Halo siperban, saya mau bertanya`;
+            const encodedMessage  = encodeURIComponent(whatsappMessage);
+            const whatsappLink    = `https://wa.me/${noTelepon}?text=${encodedMessage}`;
+            
+            window.location.href  = whatsappLink
+        })
+    })
+</script>
 @endsection
