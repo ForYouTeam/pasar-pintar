@@ -117,7 +117,7 @@
                                                         $d->harga - ($d->harga * ($d->perubahan_harga/100))
                                                     }}
                                                 </span><br>
-                                                <a class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
+                                                <a href="{{route('pemesanan')}}" class="main-btn" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                                             </div>
                                         </div> <!-- single product items -->
                                     </div>
@@ -180,7 +180,7 @@
                                     <td class="text-left"> {{$i['telepon']}}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3"><button class="main-btn mt-3">Chat sekarang</button></td>
+                                    <td colspan="3"><a href="" class="main-btn mt-3">Chat sekarang</a></td>
                                 </tr>
                             </table>
                         </p>

@@ -1,4 +1,7 @@
 @extends('Layout/Base')
+@section('title')
+    Hewan
+@endsection
 @section('content')
 <div class="row">
   <div class="col-lg-12 grid-margin stretch-card">
