@@ -144,19 +144,77 @@
         </div> 
     <p class="text-center" style="font-size: 20pt">Belum ada profile</p>
     @else
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-25">
+                    <h3 class="title mb-15">PROFILE</h3>
+                    <p></p>
+                </div> 
+            </div>
+        </div> 
+        <div class="row justify-content-center">
+            @foreach ($profil as $i)
+            <div class="col-lg-3 col-md-6 col-sm-8">
+                <div class="single-temp text-center mt-30">
+                    <div class="team-image">
+                        <img src="{{asset('storage/gambar/'. $i['foto'])}}" alt="Team" style="transform: scale(0.5)">
+                    </div>
+                    <div class="team-content mt-10">
+                        <h4 class="title mb-10"><a href="#">{{$i['nama_usaha']}}</a></h4>
+                        <p>
+                            <table style="width: 100%">
+                                <tr>
+                                    <td class="text-left">Nama</td>
+                                    <td>&nbsp; &nbsp;: &nbsp;</td>
+                                    <td class="text-left">{{$i['nama_pemilik']}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Alamat</td>
+                                    <td>&nbsp; &nbsp;: &nbsp;</td>
+                                    <td class="text-left"> {{$i['alamat']}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left">Telepon</td>
+                                    <td>&nbsp; &nbsp;: &nbsp;</td>
+                                    <td class="text-left"> {{$i['telepon']}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><button class="main-btn mt-3">Chat sekarang</button></td>
+                                </tr>
+                            </table>
+                        </p>
+                    </div>
+                </div> 
+            </div>
+            @endforeach
+        </div> 
+    </div> 
+    @endif
+</section>
+{{-- <section id="testimoni" class="team-area pt-125 pb-130">
+    @if (count($profil) <= 0)
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center pb-25">
+                    <h3 class="title mb-15">PROFILE</h3>
+                    <p></p>
+                </div> 
+            </div>
+        </div> 
+    <p class="text-center" style="font-size: 20pt">Belum ada profile</p>
+    @else
         @foreach ($profil as $d)
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6 col-sm-8">
                 <div class="single-temp text-center mt-30">
                     <div class="team-image">
-                        <img src="{{asset('storage/gambar/'. $d['foto'])}}" alt="Team" style="transform: scale(0.7)">
+                        <img src="{{asset('storage/gambar/'. $d['foto'])}}" alt="Team" style="transform: scale(0.5)">
                     </div>
                     <div class="team-content mt-30">
                         <h4 class="title mb-10"><a href="#">Celina Gomez</a></h4>
-                        <p>Nama : Nazar</p>
-                        <p>Nama : Nazar</p>
-                        <p>Nama : Nazar</p>
-                        <p>Nama : Nazar</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias autem necessitatibus laudantium, quas ducimus ipsam earum dignissimos a inventore fugit repellat, dicta repellendus velit odio placeat voluptas harum facere laboriosam?</p>
                     </div>
                 </div> 
             </div>
@@ -164,7 +222,7 @@
     </div> 
     @endforeach
     @endif
-</section>
+</section> --}}
 
 @endsection
 @section('script')
