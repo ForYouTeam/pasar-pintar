@@ -62,15 +62,21 @@
 @endsection
 @section('script')
     <script>
+        let no
+
+        $(document).ready(function() {
+            no = `{{ $no_hp }}`
+        })
+
         $(document).on('click', '#btn-process', function() {
             const nama       = $('#nama').val()
             const alamat     = $('#alamat').val()
             const jenis      = $('#jenis').val()
             const harga      = $('#harga').val()
             const keterangan = $('#keterangan').val()
-            const nomor      = '6282189037993'
+            const nomor      = no
 
-            const whatsappMessage = `nama: ${nama}\nalamat: ${alamat}\njenis%sapi: ${jenis}\nharga: ${harga}\nketerangan: ${keterangan}`;
+            const whatsappMessage = `nama: ${nama}\nalamat: ${alamat}\njenis sapi: ${jenis}\nharga: ${harga}\nketerangan: ${keterangan}`;
             const encodedMessage  = encodeURIComponent(whatsappMessage);
             const whatsappLink    = `https://wa.me/${nomor}?text=${encodedMessage}`;
             

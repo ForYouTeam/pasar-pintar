@@ -18,8 +18,9 @@ class IndexController extends Controller
             'profil' => $profil
         ]);
     }
-    public function pesanan()
+
+    public function pesanan($noHp)
     {
-        return view('web.pesanan');
+        return view('web.pesanan')->with('no_hp', $noHp);
     }
 }
