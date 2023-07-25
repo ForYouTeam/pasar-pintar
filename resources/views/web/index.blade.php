@@ -192,37 +192,6 @@
     </div> 
     @endif
 </section>
-{{-- <section id="testimoni" class="team-area pt-125 pb-130">
-    @if (count($profil) <= 0)
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section-title text-center pb-25">
-                    <h3 class="title mb-15">PROFILE</h3>
-                    <p></p>
-                </div> 
-            </div>
-        </div> 
-    <p class="text-center" style="font-size: 20pt">Belum ada profile</p>
-    @else
-        @foreach ($profil as $d)
-        <div class="row justify-content-center">
-            <div class="col-lg-3 col-md-6 col-sm-8">
-                <div class="single-temp text-center mt-30">
-                    <div class="team-image">
-                        <img src="{{asset('storage/gambar/'. $d['foto'])}}" alt="Team" style="transform: scale(0.5)">
-                    </div>
-                    <div class="team-content mt-30">
-                        <h4 class="title mb-10"><a href="#">Celina Gomez</a></h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias autem necessitatibus laudantium, quas ducimus ipsam earum dignissimos a inventore fugit repellat, dicta repellendus velit odio placeat voluptas harum facere laboriosam?</p>
-                    </div>
-                </div> 
-            </div>
-        </div> 
-    </div> 
-    @endforeach
-    @endif
-</section> --}}
 
 @endsection
 @section('script')
