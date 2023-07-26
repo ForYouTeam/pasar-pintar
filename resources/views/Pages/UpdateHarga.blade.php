@@ -174,7 +174,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v1/update_harga/`,
+                url        : `${baseUrl}/api/v1/update_harga`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {

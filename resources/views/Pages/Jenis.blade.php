@@ -104,7 +104,7 @@
             }
 
             $.ajax({
-                url        : `${baseUrl}/api/v1/jenis/`,
+                url        : `${baseUrl}/api/v1/jenis`,
                 method     : "POST"                   ,
                 data       : data                     ,
                 success: function(res) {
