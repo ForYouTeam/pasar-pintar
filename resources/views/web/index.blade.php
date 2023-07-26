@@ -70,8 +70,8 @@
                 </div> 
                 <div class="col-lg-8">
                     <div class="showcase-title pt-25 text-justify">
-                        <p>Pemasaran hewan qurban bukan hanya tentang menjual dan mendistribusikan hewan, tetapi juga membawa manfaat sosial yang signifikan bagi masyarakat. 
-                        Melalui strategi pemasaran yang efektif, pelaksanaan hewan qurban dapat mencapai potensi maksimalnya dalam memberikan manfaat kepada penerima manfaat 
+                        <p>Pemasaran hewan ternak bukan hanya tentang menjual dan mendistribusikan hewan, tetapi juga membawa manfaat sosial yang signifikan bagi masyarakat. 
+                        Melalui strategi pemasaran yang efektif, pelaksanaan hewan ternak dapat mencapai potensi maksimalnya dalam memberikan manfaat kepada penerima manfaat 
                         yang membutuhkan. Dengan demikian, semakin banyak masyarakat yang merasakan manfaat dan keberkahan dari ibadah qurban, serta semakin erat persatuan dan solidaritas di antara umat Muslim.</p>
                     </div> <!-- showcase title -->
                 </div>

@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="copyright text-center">
-                        <p>Desain by <a href="https://uideck.com" rel="nofollow">SIPERBAN (Sistem Informasi Pemasaran Hewan Kurban)</a></p>
+                        <p>Desain by <a href="https://uideck.com" rel="nofollow">SIPERBAN (Sistem Informasi Pemasaran Hewan Ternak)</a></p>
                     </div> <!-- copyright -->
                 </div>
             </div> <!-- row -->
