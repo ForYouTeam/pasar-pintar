@@ -37,7 +37,7 @@
                                     <a data-scroll-nav="0" href="#about">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-scroll-nav="0" href="#menu">Menu</a>
+                                    <a data-scroll-nav="0" href="#menu">Penjualan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a data-scroll-nav="0" href="#profile">Profile</a>
