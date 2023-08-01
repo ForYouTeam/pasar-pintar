@@ -35,7 +35,7 @@
                        </div>
                        <div class="col-lg-8 col-md-7">
                            <div class="slider-product-content">
-                               <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>Sapi</span> {{$d->nama_jenis}}</h1>
+                               <h1 class="slider-title mb-10" data-animation="fadeInUp" data-delay="0.3s"><span>{{$d->nama}}</span> {{$d->nama_jenis}}</h1>
                                <p class="mb-25" data-animation="fadeInUp" data-delay="0.9s">Keterangan : <br> {{$d['keterangan']}} </p>
                                <a class="main-btn" href="#menu" data-animation="fadeInUp" data-delay="1.5s">Pesan Sekarang <i class="lni-chevron-right"></i></a>
                            </div> <!-- slider product content -->

@@ -41,14 +41,6 @@
                                 <div class="help-block with-errors"></div>
                             </div> <!-- single form -->
                         </div>
-                        <div class="col-lg-6">
-                            <div class="single-form form-group">
-                                <label for="" class="label-group">Metode Pembayaran :</label>
-                                <input id="metode_pembayaran" type="text" placeholder="Input disini"
-                                    data-error="Valid email is required." required="required">
-                                <div class="help-block with-errors"></div>
-                            </div> <!-- single form -->
-                        </div>
                         <div class="col-lg-12">
                             <div class="single-form form-group">
                                 <button class="main-btn" type="button" id="btn-process">PESAN SEKARANG</button>
@@ -74,10 +66,9 @@
             const alamat = $ ('#alamat').val()
             const jenis  = $ ('#jenis').val()
             const jumlah = $ ('#jumlah').val()
-            const metode = $ ('#metode_pembayaran').val()
             const nomor  = no
 
-            const whatsappMessage = `nama: ${nama}\nalamat: ${alamat}\njenis sapi: ${jenis}\njumlah: ${jumlah}\nmetode: ${metode}`;
+            const whatsappMessage = `nama: ${nama}\nalamat: ${alamat}\njenis sapi: ${jenis}\njumlah: ${jumlah}`;
             const encodedMessage  = encodeURIComponent(whatsappMessage);
             const whatsappLink    = `https://wa.me/${nomor}?text=${encodedMessage}`;
             

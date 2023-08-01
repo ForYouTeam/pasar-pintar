@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-
     @include('web.skelton.Top')
-
 </head>
-
 <body>
     <div class="preloader">
         <div class="spin">
